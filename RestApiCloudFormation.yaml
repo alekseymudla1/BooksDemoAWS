@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: BooksDemo RestApi block
+
+Parameters:
+  Environment:
+    Description: Environment Name
+    Type: String
+
+Resources:
+  dynamodbTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: bookId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: bookId
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: !Sub booksdemo-${Environment}
