@@ -1,0 +1,1 @@
+This is project is for learning purposes in CloudFormation area
