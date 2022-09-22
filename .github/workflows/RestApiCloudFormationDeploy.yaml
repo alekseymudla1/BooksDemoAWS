@@ -10,8 +10,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    
     steps:
+    - name: check files
+      run: ls
+
     - name: Copy RestApi CloudFormation Template
       run: cp ./RestApiCloudFormation.yaml ./artifact/RestApiCloudFormation.yaml
 
@@ -33,9 +36,6 @@ jobs:
     needs: build
 
     steps:
-      - name: check files
-        run: ls
-        
       - uses: actions/download-artifact@v3
         with:
           name: rest
