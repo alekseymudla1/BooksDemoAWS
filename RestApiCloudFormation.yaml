@@ -53,7 +53,7 @@ Resources:
   BooksDemoEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      Name: !Sub booksDemo${Environment}
+      KeyName: !Sub booksDemo${Environment}
       ImageId: ami-08c40ec9ead489470
       InstanceType: t2.micro
       Monitoring: false
