@@ -13,9 +13,9 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-    
-    - name: check files
-      run: ls
+
+    - name: Make artifacts directory
+      run: mkdir artifact
 
     - name: Copy RestApi CloudFormation Template
       run: cp ./RestApiCloudFormation.yaml ./artifact/RestApiCloudFormation.yaml
