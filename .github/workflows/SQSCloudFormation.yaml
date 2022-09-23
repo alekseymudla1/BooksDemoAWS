@@ -4,11 +4,11 @@ on:
   push:
     branches: [ "master" ]
     paths:
-      - "RestApiCloudFormation.yaml"
+      - "SQSCloudFormation.yaml"
   pull_request:
     branches: [ "master" ]
     paths:
-      - "RestApiCloudFormation.yaml"
+      - "SQSCloudFormation.yaml"
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
       run: mkdir artifact
 
     - name: Copy RestApi CloudFormation Template
-      run: cp ./RestApiCloudFormation.yaml ./artifact/RestApiCloudFormation.yaml
+      run: cp ./SQSCloudFormation.yaml ./artifact/SQSCloudFormation.yaml
 
     - uses: actions/upload-artifact@v3
       with:
@@ -58,5 +58,6 @@ jobs:
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: rest-block
-          template: artifact/RestApiCloudFormation.yaml
+          template: artifact/SQSCloudFormation.yaml
           parameter-overrides: "Environment=test"
+

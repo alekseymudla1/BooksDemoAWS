@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: BooksDemo 
+
+Parameters:
+  Environment:
+    Description: Environment Name
+    Type: String
+
+Resources:
+  booksDemoSQS:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub BooksDemo${Environment} 
+      DelaySeconds: 10
+      MaximumMessageSize: 100 
+      MessageRetentionPeriod: 100
+      VisibilityTimeout: 500 
+      FifoQueue:  true
