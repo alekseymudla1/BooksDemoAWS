@@ -1,4 +1,4 @@
-name: CloudFormation
+name: SQSCloudFormation
 
 on:
   push:
@@ -57,7 +57,7 @@ jobs:
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: rest-block
+          name: sqs-block
           template: artifact/SQSCloudFormation.yaml
           parameter-overrides: "Environment=test"
 
