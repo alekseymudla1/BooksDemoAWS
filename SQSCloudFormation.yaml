@@ -3,7 +3,7 @@ Description: BooksDemo
 
 Parameters:
   Environment:
-    Description: Environment Name
+    Description: Environment Name for SQS
     Type: String
 
 Resources:
