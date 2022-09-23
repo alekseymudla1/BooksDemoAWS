@@ -12,7 +12,6 @@ Resources:
     Properties:
       QueueName: !Sub BooksDemo${Environment}.fifo
       DelaySeconds: 10
-      MaximumMessageSize: 100 
       MessageRetentionPeriod: 100
       VisibilityTimeout: 500 
       FifoQueue:  true
