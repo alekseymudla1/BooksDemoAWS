@@ -15,3 +15,21 @@ Resources:
       MessageRetentionPeriod: 100
       VisibilityTimeout: 500 
       FifoQueue:  true
+
+Outputs:
+  QueueURL: 
+    Description: "URL of new Amazon SQS Queue"
+    Value: 
+      Ref: booksDemoSQS
+  QueueARN: 
+    Description: "ARN of new AmazonSQS Queue"
+    Value: 
+      Fn::GetAtt: 
+        - booksDemoSQS
+        - Arn
+  QueueName: 
+    Description: "Name of new Amazon SQS Queue"
+    Value: 
+      Fn::GetAtt: 
+        - booksDemoSQS
+        - QueueName

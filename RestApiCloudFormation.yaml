@@ -5,6 +5,9 @@ Parameters:
   Environment:
     Description: Environment Name
     Type: String
+  SQSQueueArn:
+    Description: SQS queue Arn
+    Type: String
 
 Resources:
   booksDemoDynamodbTable:
@@ -39,6 +42,13 @@ Resources:
               - Effect: "Allow"
                 Action: "*"
                 Resource: !GetAtt booksDemoDynamodbTable.Arn
+        - PolicyName: "sqs-access-policy"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action: "*"
+                Resource: ${SQSQueueArn}
 
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -69,7 +79,7 @@ Outputs:
             - BooksDemoEC2Instance
             - PublicDnsName
   PublicIP:
-    Description: Public IP Address
+    Description: Public IP Address of EC2 instance
     Value: !GetAtt
             - BooksDemoEC2Instance
             - PublicIp

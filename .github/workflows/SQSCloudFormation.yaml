@@ -4,11 +4,11 @@ on:
   push:
     branches: [ "master" ]
     paths:
-      - "SQSCloudFormation.yaml"
+      - "test.yaml"
   pull_request:
     branches: [ "master" ]
     paths:
-      - "SQSCloudFormation.yaml"
+      - "test.yaml"
 
 jobs:
   build:
