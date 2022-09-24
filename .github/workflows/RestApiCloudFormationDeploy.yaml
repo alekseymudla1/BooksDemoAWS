@@ -63,7 +63,7 @@ jobs:
       - name: Get outputs from the stack just created
         id: get-outputs
         run: >-
-          echo "::set-output name=ECRURI::$(
+          echo "::set-output name=QueueARN::$(
             aws cloudformation \
             --region us-east-1 describe-stacks \
             --stack-name $(echo ${GITHUB_REF##*/}) \
