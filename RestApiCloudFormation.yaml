@@ -48,7 +48,7 @@ Resources:
             Statement:
               - Effect: "Allow"
                 Action: "*"
-                Resource: "${SQSQueueArn}"
+                Resource: !Sub "${SQSQueueArn}"
 
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
