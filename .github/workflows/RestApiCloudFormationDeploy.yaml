@@ -64,7 +64,7 @@ jobs:
       - name: Get outputs from the stack just created
         id: get-outputs
         run: >-
-          echo "::set-output name=QueueARN::$(
+          echo "::set-output name=QueueName::$(
             aws cloudformation \
             --region us-east-1 describe-stacks \
             --stack-name sqs-block \
@@ -72,11 +72,11 @@ jobs:
           )"
 
       - name: "Echo sqs arn"
-        run: echo "${{ steps.get-outputs.outputs.QueueARN }}"
+        run: echo "${{ steps.get-outputs.outputs.QueueName }}"
 
       - name: Deploy Rest to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: rest-block
           template: artifact/RestApiCloudFormation.yaml
-          parameter-overrides: "Environment=test,SQSQueueArn=${{ steps.get-outputs.outputs.QueueARN }}"
+          parameter-overrides: "Environment=test,SQSQueueArn=arn:aws:sqs:us-east-1:*:${{ steps.get-outputs.outputs.QueueName }}"
