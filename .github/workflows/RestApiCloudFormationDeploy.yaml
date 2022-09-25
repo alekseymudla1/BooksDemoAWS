@@ -59,6 +59,7 @@ jobs:
           name: sqs-block
           template: artifact/SQSCloudFormation.yaml
           parameter-overrides: "Environment=test"
+          no-fail-on-empty-changeset: "1"
 
       - name: Get outputs from the stack just created
         id: get-outputs
