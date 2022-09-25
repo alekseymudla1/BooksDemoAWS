@@ -81,4 +81,4 @@ jobs:
         with:
           name: rest-block
           template: artifact/RestApiCloudFormation.yaml
-          parameter-overrides: Environment=test,SQSQueueArn=${{ steps.get-outputs.outputs.ParamsOverrides }}
+          parameter-overrides: ${{ steps.get-outputs.outputs.ParamsOverrides }}
