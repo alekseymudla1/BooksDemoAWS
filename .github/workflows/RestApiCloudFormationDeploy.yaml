@@ -5,6 +5,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+env:
+  MY_WORKFLOW_VAR: work
 
 jobs:
   build:
@@ -71,12 +73,12 @@ jobs:
             --query "Stacks[0].Outputs[1].OutputValue"
           )"
 
-      - name: "Echo sqs arn"
-        run: echo ${{ steps.get-outputs.outputs.QueueName }}
-
+      - name: Set env
+        run: echo ::set-env name=STEPVAR::${{ env.MY_WORKFLOW_VAR }}-somestep
+      - name: Test
+        run: echo $STEPVAR
+        
       - name: Deploy Rest to AWS CloudFormation
-        env:
-          queuename: ${{ steps.get-outputs.outputs.QueueName }}
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: rest-block
