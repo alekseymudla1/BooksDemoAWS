@@ -75,14 +75,9 @@ jobs:
         id: get-outputs
         run: echo "::set-output name=QueueArn::arn:aws:sqs:us-east-1:*:${{ steps.get-aws-outputs.outputs.QueueName }}"
 
-      - name: "Echo sqs arn"
-        run: echo ${{ steps.get-outputs.outputs.QueueArn }}-002
-
       - name: Deploy Rest to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
-        env:
-          test: Environment=test,SQSQueueArn=${{ steps.get-outputs.outputs.QueueArn }}
         with:
           name: rest-block
           template: artifact/RestApiCloudFormation.yaml
-          parameter-overrides: $test
+          parameter-overrides: Environment=test,SQSQueueArn=${{ steps.get-outputs.outputs.QueueArn }}
