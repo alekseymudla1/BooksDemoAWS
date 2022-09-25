@@ -73,7 +73,7 @@ jobs:
 
       - name: Get outputs from the stack just created
         id: get-outputs
-        run: echo "::set-output name=ParamsOverrides::Environment=test,SQSQueueArn=arn:aws:sqs:us-east-1:*:${{ steps.get-aws-outputs.outputs.QueueName }}"
+        run: echo "::set-output name=QueueArn::arn:aws:sqs:us-east-1:*:${{ steps.get-aws-outputs.outputs.QueueName }}"
 
       
       - name: Deploy Rest to AWS CloudFormation
@@ -81,4 +81,4 @@ jobs:
         with:
           name: rest-block
           template: artifact/RestApiCloudFormation.yaml
-          parameter-overrides: Environment=test,SQSQueueArn="arn:aws:sqs:us-east-1:*:BooksDemotest.fifo"
+          parameter-overrides: Environment=test,SQSQueueArn=${{ steps.get-outputs.outputs.QueueArn }}
