@@ -72,7 +72,7 @@ jobs:
           )"
 
       - name: "Echo sqs arn"
-        run: echo ${{ steps.get-outputs.outputs.QueueName }}
+        run: echo ${{ steps.get-outputs.outputs.QueueName }}-002
 
       - name: Deploy Rest to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
