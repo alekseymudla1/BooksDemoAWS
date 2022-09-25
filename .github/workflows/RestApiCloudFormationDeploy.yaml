@@ -68,7 +68,7 @@ jobs:
             aws cloudformation \
             --region us-east-1 describe-stacks \
             --stack-name sqs-block \
-            --query "Stacks[0].Outputs[2].OutputValue"
+            --query "Stacks[0].Outputs[1].OutputValue"
           )"
 
       - name: "Echo sqs arn"
