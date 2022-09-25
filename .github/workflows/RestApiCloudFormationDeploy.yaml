@@ -75,8 +75,10 @@ jobs:
         run: echo ${{ steps.get-outputs.outputs.QueueName }}
 
       - name: Deploy Rest to AWS CloudFormation
+        env:
+          queuename: ${{ steps.get-outputs.outputs.QueueName }}
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: rest-block
           template: artifact/RestApiCloudFormation.yaml
-          parameter-overrides: $"Environment=test,SQSQueueArn=arn:aws:sqs:us-east-1:*:${{ steps.get-outputs.outputs.QueueName }}"
+          parameter-overrides: "Environment=test,SQSQueueArn=arn:aws:sqs:us-east-1:*:${queuename}"
