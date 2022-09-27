@@ -89,13 +89,13 @@ jobs:
       - name: Get outputs from the stack just created
         id: get-s3-outputs
         run: >-
-          echo "::set-output name=QueueName::$(
+          echo "::set-output name=S3ARN::$(
             aws cloudformation \
             --region us-east-1 describe-stacks \
             --stack-name sqs-block \
-            --query "Stacks[0].Outputs[1].OutputValue"
+            --query "Stacks[0].Outputs[0].OutputValue"
           )"
 
       - name: Get outputs from the stack just created
         id: get-s3-arn-outputs
-        run: echo "::set-output name=QueueArn::arn:aws:sqs:us-east-1:*:${{ steps.get-s3-outputs.outputs.QueueName }}"
+        run: echo "::set-output name=QueueArn::arn:aws:sqs:us-east-1:*:${{ steps.get-s3-outputs.outputs.S3ARN }}"
