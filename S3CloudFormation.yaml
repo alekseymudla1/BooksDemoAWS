@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: BooksDemo 
+
+Parameters:
+  Environment:
+    Description: Environment Name for SQS
+    Type: String
+
+Resources:
+  booksDemoS3:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub books-demo-logs-${Environment}
+
+Outputs:
+  S3URL: 
+    Description: "URL of new Amazon S3"
+    Value: 
+      Ref: booksDemoS3
+  QueueARN: 
+    Description: "ARN of new Amazon S3"
+    Value: 
+      Fn::GetAtt: 
+        - booksDemoS3
+        - Arn
