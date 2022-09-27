@@ -83,7 +83,7 @@ jobs:
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: log-block
-          template: artifact/RestApiCloudFormation.yaml
+          template: artifact/S3CloudFormation.yaml
           parameter-overrides: Environment=test
 
       - name: Get outputs from the stack just created
