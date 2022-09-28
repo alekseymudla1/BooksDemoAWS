@@ -20,10 +20,11 @@ jobs:
     - name: Copy SQS CloudFormation Template
       run: cp ./SQSCloudFormation.yaml ./artifact/SQSCloudFormation.yaml
 
-    - name: Copy RestApi CloudFormation Template
-      run: cp ./RestApiCloudFormation.yaml ./artifact/RestApiCloudFormation.yaml
+    - run: cp ./RestApiCloudFormation.yaml ./artifact/RestApiCloudFormation.yaml
 
     - run: cp ./S3CloudFormation.yaml ./artifact/S3CloudFormation.yaml
+
+    - run: cp ./LogLambdaCloudFormation ./artifact/LogLambdaCloudFormation.yaml
 
     - uses: actions/upload-artifact@v3
       with:
@@ -99,3 +100,12 @@ jobs:
       - name: Get outputs from the stack just created
         id: get-s3-arn-outputs
         run: echo "::set-output name=QueueArn::arn:aws:sqs:us-east-1:*:${{ steps.get-s3-outputs.outputs.S3ARN }}"
+
+        
+
+      - name: Deploy log lambda to AWS CloudFormation
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: log-block
+          template: artifact/LogLambdaCloudFormation.yaml
+          parameter-overrides: Environment=test,SQSQueueArn=${{ steps.get-sqs-arn-outputs.outputs.QueueArn }}
