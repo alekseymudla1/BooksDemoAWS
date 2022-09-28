@@ -68,6 +68,9 @@ Resources:
       Monitoring: false
       SecurityGroupIds:
         - !Ref InstanceSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Sub BooksDemo${Environment}
 
 Outputs:
   InstanceId:
