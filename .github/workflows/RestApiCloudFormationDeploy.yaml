@@ -24,7 +24,7 @@ jobs:
 
     - run: cp ./S3CloudFormation.yaml ./artifact/S3CloudFormation.yaml
 
-    - run: cp ./LogLambdaCloudFormation ./artifact/LogLambdaCloudFormation.yaml
+    - run: cp ./LogLambdaCloudFormation.yaml ./artifact/LogLambdaCloudFormation.yaml
 
     - uses: actions/upload-artifact@v3
       with:
