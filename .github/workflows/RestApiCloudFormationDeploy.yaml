@@ -86,6 +86,7 @@ jobs:
           name: log-block
           template: artifact/S3CloudFormation.yaml
           parameter-overrides: Environment=test
+          no-fail-on-empty-changeset: "1"
 
       - name: Get outputs from the stack just created
         id: get-s3-outputs
