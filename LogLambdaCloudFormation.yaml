@@ -90,4 +90,3 @@ Resources:
       Role: !GetAtt lambdaFunctionIamRole.Arn
       Runtime: dotnet6
       Timeout: 20
-      Environment:
