@@ -100,7 +100,7 @@ jobs:
 
       - name: Get outputs from the stack just created
         id: get-s3-arn-outputs
-        run: echo "::set-output name=QueueArn::arn:aws:sqs:us-east-1:*:${{ steps.get-s3-outputs.outputs.S3ARN }}"
+        run: echo "::set-output name=S3Arn::arn:aws:sqs:us-east-1:*:${{ steps.get-s3-outputs.outputs.S3ARN }}"
 
         
 
@@ -109,5 +109,5 @@ jobs:
         with:
           name: log-block
           template: artifact/LogLambdaCloudFormation.yaml
-          parameter-overrides: Environment=test,SQSQueueArn=${{ steps.get-sqs-arn-outputs.outputs.QueueArn }}
+          parameter-overrides: Environment=test,SQSQueueArn=${{ steps.get-sqs-arn-outputs.outputs.QueueArn }},S3Arn=${{ steps.get-s3-arn-outputs.outputs.S3Arn }}
           no-fail-on-empty-changeset: "1"

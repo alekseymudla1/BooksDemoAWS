@@ -8,6 +8,9 @@ Parameters:
   SQSQueueArn:
     Description: SQS queue Arn
     Type: String
+  S3Arn:
+    Description: S3 bucket for log Arn
+    Type: String
 
 Resources: 
   lambdaFunctionIamRole:
@@ -72,7 +75,7 @@ Resources:
                   - "s3:CreateAccessPointForObjectLambda"
                   - "s3:PutBucketObjectLockConfiguration"
                   - "s3:ReplicateDelete"
-                Resource: !Sub books-demo-logs-${Environment}
+                Resource: !Sub ${S3Arn}
               - Effect: Allow
                 Action:
                   - sqs:ReceiveMessage
@@ -84,7 +87,7 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Description: CloudFormation demo lambda
-      FunctionName: !Sub demo-loudformation${Environment}
+      FunctionName: !Sub books-demo-log-${Environment}
       Handler: GHActionsCFStudy::GHActionsCFStudy.Function::FunctionHandler
       MemorySize: 128
       Role: !GetAtt lambdaFunctionIamRole.Arn
