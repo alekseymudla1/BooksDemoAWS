@@ -83,6 +83,7 @@ Resources:
                   - sqs:GetQueueAttributes
                   - sqs:ChengeMessageVisibility
                 Resource: !Sub ${SQSQueueArn}
+                
   lambdaFunction:
     Type: AWS::Lambda::Function
     Properties:
