@@ -109,3 +109,4 @@ jobs:
           name: log-block
           template: artifact/LogLambdaCloudFormation.yaml
           parameter-overrides: Environment=test,SQSQueueArn=${{ steps.get-sqs-arn-outputs.outputs.QueueArn }}
+          no-fail-on-empty-changeset: "1"
