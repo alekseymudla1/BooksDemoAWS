@@ -28,7 +28,7 @@ Resources:
   EC2KeyPair:
     Type: AWS::EC2::KeyPair
     Properties:
-      KeyName: !Sub BooksDemoKeyPair${Environment}
+      KeyName: BooksDemoKeyPair
 
   iamRole:
     Type: AWS::IAM::Role
