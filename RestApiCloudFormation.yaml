@@ -73,7 +73,7 @@ Resources:
       Monitoring: false
       SecurityGroupIds:
         - !Ref InstanceSecurityGroup
-      KeyPair: !Ref EC2KeyPair
+      KeyName: !Ref EC2KeyPair
       Tags:
         - Key: Name
           Value: !Sub BooksDemo${Environment}
