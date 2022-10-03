@@ -24,7 +24,6 @@ Resources:
         WriteCapacityUnits: 5
       TableName: !Sub booksdemo-${Environment}
 
-
   EC2KeyPair:
     Type: AWS::EC2::KeyPair
     Properties:
