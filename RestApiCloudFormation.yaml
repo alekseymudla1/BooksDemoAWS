@@ -24,11 +24,6 @@ Resources:
         WriteCapacityUnits: 5
       TableName: !Sub booksdemo-${Environment}
 
-  EC2KeyPair:
-    Type: AWS::EC2::KeyPair
-    Properties:
-      KeyName: BooksDemoKeyPair
-
   iamRole:
     Type: AWS::IAM::Role
     Properties:
@@ -73,7 +68,7 @@ Resources:
       Monitoring: false
       SecurityGroupIds:
         - !Ref InstanceSecurityGroup
-      KeyName: !Ref EC2KeyPair
+      KeyName: !Sub BooksDemoRest${Environment}
       Tags:
         - Key: Name
           Value: !Sub BooksDemo${Environment}
