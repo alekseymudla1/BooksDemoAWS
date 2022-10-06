@@ -63,7 +63,7 @@ Resources:
   BooksDemoEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-08c40ec9ead489470
+      ImageId: ami-0f1ee03d06c4c659c
       InstanceType: t2.micro
       Monitoring: false
       SecurityGroupIds:
