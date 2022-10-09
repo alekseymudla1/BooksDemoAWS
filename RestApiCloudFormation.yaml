@@ -50,6 +50,12 @@ Resources:
                 Action: "*"
                 Resource: !Sub "${SQSQueueArn}"
 
+  Ec2SsmInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties: 
+      Path: /
+      Roles: [!Ref Ec2SsmIamRole]
+
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties: 
@@ -66,6 +72,7 @@ Resources:
       ImageId: ami-08c40ec9ead489470
       InstanceType: t2.micro
       Monitoring: false
+      IamInstanceProfile: !Ref Ec2SsmInstanceProfile
       SecurityGroupIds:
         - !Ref InstanceSecurityGroup
       KeyName: !Sub BooksDemoRest${Environment}
