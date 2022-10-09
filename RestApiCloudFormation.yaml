@@ -49,6 +49,16 @@ Resources:
               - Effect: "Allow"
                 Action: "*"
                 Resource: !Sub "${SQSQueueArn}"
+        - PolicyName: "codedeploy-bucket-access"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow",
+                Action: 
+                  - s3:GetObject,
+                  - s3:GetObjectVersion
+                  - s3:ListBucket
+                Resource: arn:aws:s3:::*/CodeDeploy/*
 
   Ec2SsmInstanceProfile:
     Type: AWS::IAM::InstanceProfile
