@@ -78,10 +78,6 @@ Resources:
 
   BooksDemoEC2Instance:
     Type: AWS::EC2::Instance
-    CreationPolicy:
-        ResourceSignal:
-          Count: '1'
-          Timeout: PT5M
     Metadata:
       AWS::CloudFormation::Init:
         config:
