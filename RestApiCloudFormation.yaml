@@ -113,6 +113,10 @@ Resources:
       SecurityGroupIds:
         - !Ref InstanceSecurityGroup
       KeyName: !Sub BooksDemoRest${Environment}
+      CreationPolicy:
+        ResourceSignal:
+          Count: '1'
+          Timeout: PT5M
       UserData:
         Fn::Base64:
           Fn::Join:
