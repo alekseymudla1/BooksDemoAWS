@@ -133,7 +133,8 @@ Resources:
             - "/opt/aws/bin/cfn-init -v"
             - " --stack "
             - Ref: AWS::StackName
-            - " --resource SampleLinuxInstance"
+            - " --resource "
+            - !Sub BooksDemoRest${Environment}
             - " --region "
             - Ref: AWS::Region
             - "\n"
