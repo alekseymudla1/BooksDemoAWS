@@ -28,3 +28,11 @@ Outputs:
         - Arn
     Export:
       Name: !Sub booksDemoS3Arn${Environment}
+  S3Name:
+    Description: "Name of new Amazon S3"
+    Value:
+      Fn::GetAtt: 
+        - booksDemoS3
+        - Name
+    Export:
+      Name: !Sub booksDemoS3Name${Environment}
