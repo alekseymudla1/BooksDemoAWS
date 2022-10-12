@@ -33,6 +33,6 @@ Outputs:
     Value:
       Fn::GetAtt: 
         - booksDemoS3
-        - Name
+        - BucketName
     Export:
       Name: !Sub booksDemoS3Name${Environment}
