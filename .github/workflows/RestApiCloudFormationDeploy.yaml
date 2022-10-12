@@ -57,21 +57,6 @@ jobs:
           parameter-overrides: "Environment=test"
           no-fail-on-empty-changeset: "1"
 
-      - name: Get outputs from the stack just created
-        id: get-sqs-outputs
-        run: >-
-          echo "::set-output name=QueueName::$(
-            aws cloudformation \
-            --region us-east-1 describe-stacks \
-            --stack-name sqs-block \
-            --query "Stacks[0].Outputs[1].OutputValue"
-          )"
-
-      - name: Get outputs from the stack just created
-        id: get-sqs-arn-outputs
-        run: echo "::set-output name=QueueArn::arn:aws:sqs:us-east-1:*:${{ steps.get-sqs-outputs.outputs.QueueName }}"
-
-      
       - name: Deploy Rest to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
