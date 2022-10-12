@@ -139,7 +139,7 @@ Resources:
             - "\n"
       Tags:
         - Key: Name
-          Value: !Sub BooksDemo${Environment}
+          Value: !Sub BooksDemoRest${Environment}
 
 Outputs:
   InstanceId:
