@@ -48,7 +48,9 @@ Resources:
             Statement:
               - Effect: "Allow"
                 Action: "*"
-                Resource: !Sub "${SQSQueueArn}"
+                Resource: 
+                  Fn::ImportValue:
+                    Fn::Sub: booksDemoSQSArn${Environment}
         - PolicyName: "codedeploy-bucket-access"
           PolicyDocument:
             Version: "2012-10-17"
