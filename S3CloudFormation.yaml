@@ -18,9 +18,13 @@ Outputs:
     Description: "URL of new Amazon S3"
     Value: 
       Ref: booksDemoS3
+    Export:
+      Name: !Sub booksDemoS3Url${Environment}
   S3ARN: 
     Description: "ARN of new Amazon S3"
     Value: 
       Fn::GetAtt: 
         - booksDemoS3
         - Arn
+    Export:
+      Name: !Sub booksDemoS3Arn${Environment}
