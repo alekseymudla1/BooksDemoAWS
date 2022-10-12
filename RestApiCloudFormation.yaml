@@ -5,9 +5,6 @@ Parameters:
   Environment:
     Description: Environment Name
     Type: String
-  SQSQueueArn:
-    Description: SQS queue Arn
-    Type: String
 
 Resources:
   booksDemoDynamodbTable:

@@ -77,7 +77,7 @@ jobs:
         with:
           name: rest-block
           template: artifact/RestApiCloudFormation.yaml
-          parameter-overrides: Environment=test,SQSQueueArn=${{ steps.get-sqs-arn-outputs.outputs.QueueArn }}
+          parameter-overrides: Environment=test
           no-fail-on-empty-changeset: "1"
 
       - name: Deploy S3 log bucket to AWS CloudFormation
