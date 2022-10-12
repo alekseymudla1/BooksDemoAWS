@@ -21,18 +21,21 @@ Outputs:
     Description: "URL of new Amazon SQS Queue"
     Value: 
       Ref: booksDemoSQS
-    Name: !Sub booksDemoSQSUrl${Environment}
+    Export:
+      Name: !Sub booksDemoSQSUrl${Environment}
   QueueARN: 
     Description: "ARN of new AmazonSQS Queue"
     Value: 
       Fn::GetAtt: 
         - booksDemoSQS
         - Arn
-    Name: !Sub booksDemoSQSArn${Environment}
+    Export:
+      Name: !Sub booksDemoSQSArn${Environment}
   QueueName: 
     Description: "Name of new Amazon SQS Queue"
     Value: 
       Fn::GetAtt: 
         - booksDemoSQS
         - QueueName
-    Name: !Sub booksDemoSQSName${Environment}
+    Export:
+      Name: !Sub booksDemoSQSName${Environment}
