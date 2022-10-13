@@ -110,6 +110,18 @@ Resources:
                   - !Sub BooksDemoRest${Environment}
                   - " --region "
                   - Ref: AWS::Region
+        install_docker:
+                packages:
+                    yum:
+                        docker: []
+                services:
+                    sysvinit:
+                        docker:
+                            enabled: "true"
+                            ensureRunning: "true"
+                commands:
+                    docker_for_ec2_user:
+                        command: usermod -G docker ec2-user
     Properties:
       ImageId: ami-026b57f3c383c2eec
       InstanceType: t2.micro
